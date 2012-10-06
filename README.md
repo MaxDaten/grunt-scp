@@ -8,7 +8,7 @@ Inside your `grunt.js` file add a section named `scp`.
 
 #### Parameters
 
-##### files ```object```
+##### src dest ```object```
 
 This defines what files this task will process and should contain key:value pairs.
 

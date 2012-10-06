@@ -1,4 +1,5 @@
 module.exports = function (grunt) {
+  grunt.loadTasks('./tasks');
 
   // Project configuration.
   grunt.initConfig({
@@ -32,6 +33,18 @@ module.exports = function (grunt) {
       },
       globals: {
         exports: true
+      }
+    },
+
+    scp: {
+      deploy: {
+        src: 'test/',
+        options: {
+          host: "test.mygnia.de",
+          port: "22",
+          user: "jloos",
+          path: "~"
+        }
       }
     }
   });
