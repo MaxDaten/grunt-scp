@@ -4,7 +4,15 @@ Copy files to a (remote) machine running an SSH daemon.
 
 ### Overview
 
-Inside your `grunt.js` file add a section named `scp`.
+Install with `npm install grunt-scp`
+
+Inside your `grunt.js` file add 
+
+``` javascript
+grunt.loadNpmTasks('grunt-scp');
+```
+
+and a task named `scp`.
 
 #### Parameters
 
@@ -46,7 +54,8 @@ scp: {
 ```
 
 ### Release History
-_(Nothing yet)_
+  
+  - added custom scp implementation with exec for higher options flexibility
 
 ### License
 Copyright (c) 2012 Andrew Jones
@@ -54,6 +63,6 @@ Licensed under the MIT license.
 
 ### TODO
 
-Decide on SCP/SSH library
-  - https://github.com/tsmith/node-control
-  - https://github.com/ecto/node-scp
+  - update README.md
+  - remove critical defaults
+
