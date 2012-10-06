@@ -1,4 +1,4 @@
-# grunt-scp
+# grunt-scp ***Warning README.md not up-to-date***
 
 Copy files to a (remote) machine running an SSH daemon.
 
