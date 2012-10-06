@@ -1,46 +1,60 @@
-# grunt-scp ***Warning README.md not up-to-date***
+# grunt-scp
 
 Copy files to a (remote) machine running an SSH daemon.
 
-### Overview
+## Getting Started
 
-Install with `npm install grunt-scp`
+*`scp` has to be installed on your system and be able to connect to the host without password (e.g. public key authentication)*
 
-Inside your `grunt.js` file add 
+Install with: `npm install grunt-scp`
+
+Inside your `grunt.js` file add :
 
 ``` javascript
 grunt.loadNpmTasks('grunt-scp');
 ```
 
-and a task named `scp`.
+and a task named `scp` (see Configuration)!
 
-#### Parameters
+## Configuration
 
-##### src dest ```object```
+Add a configuration like this:
 
-This defines what files this task will process and should contain key:value pairs.
+```javascript
+grunt.initConfig({
+  ...
+  scp: {
+        deploy: {
+          src: 'dist/',
+          options: {
+            host: "example.com",
+            port: "1023",
+            user: "jdoe",
+            path: "~/production"
+          }
+        }
+      },
+    ...
+});
+```
 
-##### options ```object```
+This will transfer the *content* of the `dist` directory (relative to the current directory) to the host directory `~/production` (relative to the user home) on the host `example.com:1023` logged in with `jdoe`.
 
-This controls how this task (and its helpers) operate and should contain key:value pairs, see options below.
+*Warning: Files on the remote machine will be overridden*
 
-#### Options
+### File option: `src`
+- `src`: defines the files and directories to transfer from local to remote machine
 
-##### user ```string```
+### scp options: `options`
 
-The username to authenticate as on remote system.
-
-##### host ```string```
-
-The remote host to copy to, set up in your `~/.ssh/config`.
-
-##### port ```number```
-
-The remote port, optional, defaults to `22`.
+- `host`: the hostname or ip (ip4/ip6). *Default: `localhost`*
+- `port`: the port of the ssh server on the host. *Default: `22`*
+- `user`: the user name on the remote to log in with.
+- `path`: the path from root (defined by the ssh server) to the directory to place the content in.  *Default: `~`*
 
 #### Config Examples
 
-``` javascript
+```javascript
 scp: {
   deploy: {
     options: {
@@ -53,16 +67,16 @@ scp: {
 }
 ```
 
-### Release History
+## Release History
   
   - added custom scp implementation with exec for higher options flexibility
 
-### License
+## License
 Copyright (c) 2012 Andrew Jones
 Licensed under the MIT license.
 
-### TODO
+## TODO
 
   - update README.md
-  - remove critical defaults
+  - unit-tests
 
